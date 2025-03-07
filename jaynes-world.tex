@@ -1,0 +1,68 @@
+\documentclass[11pt,a4paper]{article}
+
+% Essential math packages
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+% Additional useful packages
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+% Wide page with narrow margins
+\usepackage[margin=1in]{geometry}
+
+% Bibliography setup
+\usepackage[
+  backend=bibtex,
+  style=numeric,
+  sorting=none,
+  maxbibnames=99
+]{biblatex}
+\addbibresource{jaynes-world.bib}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+\title{\LARGE \textbf{Jaynes World}}
+\author{Neil D. Lawrence}
+\date{March 7, 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\section{Introduction}
+
+In this paper we introduce Jaynes' world. Jaynes world is inspired by the work of John Conway in creating the \emph{Game of Life} and Stephen Wolfram in creating a series of one dimensional cellular automata. Like those worlds, the aim is to create a world where complex patterns can emerge from simple phenomena. 
+
+\subsection{Gradient Descent}
+
+We would like the world to be understandable by a typical high school physicist. We will therefore base the world on concepts that \emph{could} be understood at that level. But at its core will be one of the most mysterious concepts in science, entropy. 
+
+Jaynes' world proceeds by following the trajectory of steepest descent in an \emph{entropic potential}. The entropic potential is defined such that the steepest direction is the direction of maximum entropy production. The name of the world can be traced to this idea because Edwin Jaynes was a great prooponet of the principle of maximum entropy for deriving physical laws and fitting data driven models. 
+
+Like Conway's game of life, our world will be defined on a grid. The grid consists of squares with unit length sides. The unit length gives the minimum distance that allow us to differentiate information in this universe. 
+
+Because we are defining an entropic potential, a fundamental parameter of our world is how many bits of information it holds. We will define the bits of information in the world to be $N$. That gives us an upper bound on the entropic potential, it's maximum is $N$.
+
+Conway used two dimensions to define his world, Wolfram focussed on one. Keeping dimensions low is one way of ensuring some aspects of simplicity in the world.
+
+We take another direction to assuming simplicity, we'd like our world to be as non-parametric as possible, and that means in the first instane we will assume the world is $N$-dimensional.  
+
+\printbibliography
+
+\end{document}
