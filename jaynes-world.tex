@@ -53,41 +53,49 @@ In this paper we introduce Jaynes' world. Jaynes world is inspired by the work o
 
 We would like the world to be understandable by a typical high school physicist. We will therefore base the world on concepts that \emph{could} be understood at that level. But at its core will be one of the most mysterious concepts in science, entropy. 
 
-Jaynes' world proceeds by following the trajectory of steepest descent in an \emph{entropic potential}. The entropic potential is defined such that the steepest direction is the direction of maximum entropy production. The name of the world can be traced to this idea because Edwin Jaynes was a great prooponet of the principle of maximum entropy for deriving physical laws and fitting data driven models. 
+Jaynes' world proceeds by following the trajectory of steepest ascent in entropy. The name of the world is inspired by Edwin Jaynes who was a great proponent of the principle ofmaximum entropy.
 
 Like Conway's Game of Life and other cellular automata, our world will be defined on a grid. The grid consists of cells with unit length sides. The unit length gives the minimum distance that allows us to differentiate information in this universe. 
 
-Because we are defining an entropic potential, a fundamental parameter of our world is how many bits of information it holds. We will define the bits of information in the world to be $N$. That gives us an upper bound on the entropic potential, it's maximum is $N$ bits, where one bit of information is gained from knowing the outcome of a 50\% probability like a coin toss. There is an information conservation law, the number of information containing cells in the world remains fixed. Points which don't contain information are defined to be `vacuum'. 
+A fundamental parameter of Jaynes' world is given by the final maximum entropy configuration. In Jaynes' world we use Shannon's entropy which is defined in bits. We define the maximum entropy configuration to contain $N$ bits, where one bit of information is gained from knowing the outcome of a 50\% probability like a coin toss. This also leads to an information conservation law. The number of information carrying cells in the world remains fixed. Cells which don't contain information are said to be in a `vacuum' state.  
 
 Conway used two dimensions to define his world, Wolfram focussed on one. Keeping dimensions low is one way of ensuring an aspect of simplicity in the world.
 
-We nake another direction to simplicity, instead of specifying dimensions we assume our world is non-parametric in dimensions so there are as many dimensions as there are bits in the world, and that means in the first instance we will assume the world is $N$-dimensional. These bits of information are represented in our world's configuration which is given by an $N$ dimensional vector $\mathbf{x}$ of integer cooridinate values on the grid.
+We go in the other direction to define simplicity, instead of specifying a number of dimensions we assume our world is non-parametric. From a practical sense this means there are as many dimensions as we need. For our world, that means we assume that there are $N$ dimensions. Because there is nothing we can do in $\infty$ dimensions that we can't do in $N$ dimensions.  The bits of information are stored in coordinates given by an $N$ dimensional vector $\mathbf{x}$ of integer values which specify cell locations in the grid.
 
-The parameters of the world are given by another $N$-dimensional vector $\boldsymbol{\theta}$, they represent lengthscales through the following relationship,
+We can represent the non-parametric nature of the world by introducing another $N$-dimensional vector $\boldsymbol{\theta}$, that define how many cells there are in each dimension. We define,
 \[
 \theta_i = \log_2 \ell_i,
 \]
 where $\ell_i$ is the width of the grid in the $i$th dimension. 
 
-Our final condition is that information can only move through the vaccum to a neighbouring cell in each iteraction. 
+To add further complexity, we assume information can only change when it moves. In each `turn' of the game it can only move into a neigbouring cell.  
 
 \subsection{First Observation in Jaynes' World}
 
 Already with these definitions we can make some observations about the initial configuration of Jaynes' world. Regardless where we initialise to a sophisticated observer\footnote{We have not yet defined observers, but for the moment we assume they might exist.} will perceive that their world's configuration emerged from an origin point where entropy was minimised. This would be a point with o vacuum where all values of \mathbf{x} are coupled implying they are neighbours. 
 
-Note that observers would perceive this regardless of the actuall initial configuration of their world. 
+Note that observers would perceive this initial state regardless of the actual initial configuration of their world, because when they reversed iterations they would be descending the entropy towards the origin point which would always be a minimum entropy configuration. 
 
-This gives us a necessary initial condition of Jaynes' world, a state of minimum entropy and maximum entropic potential where all bits are information connected. Having recovered a \emph{necessary} initial condition we can now look at the other boundary.
+This gives us a necessary initial condition of Jaynes' world, a state of minimum entropy and maximum entropic potential where all bits are neighbouring each other, so we need to place our bits in an $N-1$ dimensional simplex. This state has an entropy of zero. 
 
-The final condition should be a point where the entropic potential is minimised, so the world is in a state of maximum entropy. This state is characterised by a relationship between the Jacobian and the Hessian which comes to us from information geometry, the maximum entropy distribution is characterised by a Hessian which is the square of its Jacobian. 
+The Jaynes' world game ends when the state of maximum entropy is reached. Maximum entropy distributions are characterised by a relationship between the Jacobian and the Hessian which comes to us from information geometry, the maximum entropy distribution is characterised by a Hessian which is the square of its Jacobian. 
+
+The initial state of the world is at minimum entropy. But we will assume that the first gradeint step gives us the form of that probability distribtuion that maximises its entropy. In otherwords the first thing Jaynes' world does is give the intial minimal entropy configuration a probabilistic form through free-form optimisation of the variational distribution to its maximum entropy form, i.e. a distribution where the Hessian is the square of the Jacobian.
 
 \subsection{Dynamics}
 
-The dynamics of Jaynes' world come from gradient descent, but the relationship between Jacobian and Hessian inspires us to consider a variation on gradient descent that incorporates the Hessian.
+The update rule for Jayne's world is `steepest gradient ascent'. At each iteraction we make the move that vies us most entropy in th system. But this is not the optimal maximisation rule. Indeed, we will now conjecture that this update rule provides the slowest route to the top. 
 
-Newton's method is an iterative method for finding roots of an equation, and can be modified to find the minima of a function. Instead of descending the gradient directly by changing the parameters through a scaled version of the Jacobian, we weight the Jacobian by the inverse Hessian. These second order descent methods converge faster than standard gradient methods, but are often prohibitive to implement because of the cost of inverting the Hessian. However, the condition on the dynamics that comes from our system's minima now comes to our aid.
+Newton's method is an iterative method for finding roots of an equation. It can also be modified to find the stationary points of a function. When applied in multiple dimensions it is called a second order method. In these cases, instead of descending the gradient directly we change the parameters through a transformation  of the Jacobian. At each iteration we weight the Jacobian by the inverse Hessian. This second order descent methods converges faster than standard gradient methods, but it can be prohibitive to implement because of the cost of computing and inverting the Hessian. However, the condition on the dynamics that comes from our system's minima now comes to our aid.
 
-If the Hessian is the square of the Jacobian, then the descent direction becomes the \emph{Moore-Penrose} pseudo-inverse of the systems Jacobian Jacobian. j.
+If the Hessian is the square of the Jacobian, then the descent direction becomes the \emph{Moore-Penrose} pseudo-inverse of the systems Jacobian. So in otherwords, steepest descent is the inverse of the optimal descent direction. In Jaynes' world physics progresses by taking the `scenic route'. Conceptually what happens is as follows, instead of descending in the direction of the \emph{inverse Hessian}, we end up descending in the direction provided by the \emph{Hessian}. As this proceeds it means that we descend the `ridges' of the configuration space. Areas of the configuration space that are actually maxima in almost all projections of configuration space, but with a few `escape dimensions' that define the ridge. 
+
+These ridges give they physics of Jaynes' world some predictability. But this predictability is interspersed by moments of decision. These occur when the inevitable stationary point is reached. THe stationary point will be a saddle point, and the Hessian will have negative eigenvalues. We reach these points because we are descending according to the slowest route, which means we are seeking out saddle points. In effect we are taking a tour of parameter space and avoiding the global minimum. The tour must proceed in a way that maximises entropy production, but also in a way that keeps the entropic potential of the world as high as possible. 
+
+These dynamics present a rescipe for complexity, in Jaynes' world there's a paradox, we are inevitably seeking the directions that maximise entropy production, but we end up taking the slowest route possible to the final destination.\footnote{It is worth considering how machine learning might work in Jaynes' world. The trick would be to build models that start in regions of low entropic potential and climb the entropic gradient These models m}
+
+
 
 \printbibliography
 
